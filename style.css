@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+    --bg-dark: #040508;
+    --primary: #c5a059;
+    --primary-gradient: linear-gradient(135deg, #d4b26f 0%, #a37c3f 100%);
+    --primary-glow: rgba(197, 160, 89, 0.2);
+    --text-main: #f3f4f6;
+    --text-muted: #8e95a5;
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.minimalist-body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Glowing Accent */
+.glow-accent {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, rgba(197, 160, 89, 0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(80px);
+    z-index: 1;
+    pointer-events: none;
+    animation: pulseGlow 10s infinite ease-in-out;
+}
+
+/* Main Container */
+.minimalist-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    z-index: 10;
+}
+
+.message-wrapper {
+    max-width: 800px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInIntro 1.5s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-container {
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.main-logo {
+    max-width: 140px;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid rgba(197, 160, 89, 0.25);
+    padding: 8px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    transition: var(--transition-smooth);
+    animation: floatLogo 6s infinite ease-in-out;
+}
+
+.main-logo:hover {
+    border-color: var(--primary);
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px var(--primary-glow);
+}
+
+@keyframes floatLogo {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.category-tag {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.main-statement {
+    font-family: var(--font-heading);
+    font-size: clamp(3.8rem, 10vw, 6.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 45px;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    animation: textScalePulse 5s infinite ease-in-out;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+@keyframes textScalePulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    }
+    50% {
+        transform: scale(1.04);
+        filter: drop-shadow(0 12px 24px rgba(197, 160, 89, 0.25));
+    }
+}
+
+.sub-statement {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0 auto 40px;
+}
+
+.separator-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(197, 160, 89, 0) 0%, rgba(197, 160, 89, 0.5) 50%, rgba(197, 160, 89, 0) 100%);
+    margin: 0 auto 40px;
+}
+
+.bottom-quote {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    color: var(--text-muted);
+    opacity: 0.75;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.contact-box {
+    opacity: 0;
+    animation: fadeInIntro 1s forwards cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+}
+
+.contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 400;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 14px 28px;
+    border-radius: 50px;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+}
+
+.contact-email i {
+    color: var(--primary);
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+}
+
+.contact-email:hover {
+    border-color: var(--primary);
+    background: rgba(197, 160, 89, 0.05);
+    box-shadow: 0 10px 25px var(--primary-glow);
+    transform: translateY(-2px);
+}
+
+.contact-email:hover i {
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    padding: 40px 24px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-minimal p {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+/* Animations */
+@keyframes fadeInIntro {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+/* Responsive adjust */
+@media (max-width: 480px) {
+    .minimalist-container {
+        padding: 16px;
+    }
+    .main-statement {
+        margin-bottom: 20px;
+    }
+    .contact-email {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Falling Money Particles */
+.money-particle {
+    position: fixed;
+    top: -50px;
+    font-size: clamp(20px, 4vw, 36px);
+    pointer-events: none;
+    z-index: 2;
+    user-select: none;
+    animation: fall linear forwards;
+    opacity: 0;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg) translateX(50px);
+        opacity: 0;
+    }
+}
