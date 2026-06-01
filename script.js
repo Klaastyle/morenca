@@ -1,4 +1,4 @@
-// Minimalist JS logic for simple page intro effects and falling money particles
+// Minimalist JS logic for simple page intro effects and falling particles
 document.addEventListener('DOMContentLoaded', () => {
     // Add load state class to body to trigger smooth entrance transitions if needed
     document.body.classList.add('page-loaded');
@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Spawning system for falling money bills and coins
-    const moneySymbols = ['💵', '💸', '🪙', '💶', '💷', '💰'];
+    // Spawning system for falling money, coins, and stars
+    const moneySymbols = ['💵', '💸', '🪙', '💶', '💷', '💰', '⭐', '✨', '🌟'];
     const createMoneyParticle = () => {
         const particle = document.createElement('div');
         particle.classList.add('money-particle');
         
-        // Pick a random money emoji/symbol
+        // Pick a random money or star symbol
         particle.innerText = moneySymbols[Math.floor(Math.random() * moneySymbols.length)];
         
         // Spawn only on the left (0 to 20vw) or right (80 to 100vw) margins to avoid blocking the center text
@@ -43,6 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, duration * 1000);
     };
 
-    // Periodically spawn a new falling money particle
+    // Periodically spawn a new falling particle
     setInterval(createMoneyParticle, 350);
 });
