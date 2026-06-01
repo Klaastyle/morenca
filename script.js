@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Spawning system for falling money, coins, and stars
-    const moneySymbols = ['💵', '💸', '🪙', '💶', '💷', '💰', '⭐', '✨', '🌟'];
+    // Spawning system for falling money, coins, stars, and bees
+    const moneySymbols = ['💵', '💸', '🪙', '💶', '💷', '💰', '⭐', '✨', '🌟', '🐝'];
     const createMoneyParticle = () => {
         const particle = document.createElement('div');
         particle.classList.add('money-particle');
         
-        // Pick a random money or star symbol
+        // Pick a random money, star, or bee symbol
         particle.innerText = moneySymbols[Math.floor(Math.random() * moneySymbols.length)];
         
         // Spawn only on the left (0 to 20vw) or right (80 to 100vw) margins to avoid blocking the center text
