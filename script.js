@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Spawning system for falling money, coins, stars, and bees
-    const moneySymbols = ['💵', '💸', '🪙', '💶', '💷', '💰', '⭐', '✨', '🌟', '🐝'];
+    const moneySymbols = ['💵', '💸', '🪙', '💶', '💷', '💰', '⭐', '✨', '🌟', '🐝', '🐝', '🐝'];
     const createMoneyParticle = () => {
         const particle = document.createElement('div');
         particle.classList.add('money-particle');
